@@ -65,10 +65,7 @@ lib
 es
 _site
 yarn.lock
-package-lock.json
 /coverage
 
 # useless files
 templete
-
-package-lock.json
