@@ -4,9 +4,19 @@ jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
     steps:
+      runs-on: ubuntu-latest
+      steps:
       - uses: actions/checkout@v1
-      - uses: actions/setup-node@v1
-        with:
-          node-version: 10
-      - run: npm install
+      - run: npm ci
       - run: npm run build
+
+      #发布到mybells.github.io/master
+      - name: Deploy gcdxuzhiwei.github.io/master
+        uses: peaceiris/actions-gh-pages@v2
+        env:
+          ACTIONS_DEPLOY_KEY: ${{ secrets.ACTIONS_DEPLOY_KEY }}
+          EXTERNAL_REPOSITORY: gcdxuzhiwei/gcdxuzhiwei.github.io #可以新建一个mybells.github.io仓库发布到master
+          PUBLISH_BRANCH: master
+          PUBLISH_DIR: docs/.vuepress/dist
+        with:
+            emptyCommits: false
