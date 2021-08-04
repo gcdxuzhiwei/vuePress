@@ -1,22 +1,25 @@
-name: GitHub Actions Demo
-on: [push]
+name: github pages
+
+on:
+  push:
+    branches:
+    - main
+
 jobs:
-  Explore-GitHub-Actions:
+  build-deploy:
     runs-on: ubuntu-latest
     steps:
-      runs-on: ubuntu-latest
-      steps:
-      - uses: actions/checkout@v1
-      - run: npm ci
-      - run: npm run build
+    - uses: actions/checkout@v1
+    - run: npm ci
+    - run: npm run build
 
-      #发布到mybells.github.io/master
-      - name: Deploy gcdxuzhiwei.github.io/master
-        uses: peaceiris/actions-gh-pages@v2
-        env:
-          ACTIONS_DEPLOY_KEY: ${{ secrets.ACTIONS_DEPLOY_KEY }}
-          EXTERNAL_REPOSITORY: gcdxuzhiwei/gcdxuzhiwei.github.io #可以新建一个mybells.github.io仓库发布到master
-          PUBLISH_BRANCH: master
-          PUBLISH_DIR: docs/.vuepress/dist
-        with:
-            emptyCommits: false
+    #发布到gcdxuzhiwei.github.io/main
+    - name: Deploy gcdxuzhiwei.github.io/main
+      uses: peaceiris/actions-gh-pages@v2
+      env:
+        ACTIONS_DEPLOY_KEY: ${{ secrets.ACTIONS_DEPLOY_KEY }}
+        EXTERNAL_REPOSITORY: gcdxuzhiwei/gcdxuzhiwei.github.io #可以新建一个gcdxuzhiwei.github.io仓库发布到main
+        PUBLISH_BRANCH: main
+        PUBLISH_DIR: docs/.vuepress/dist
+      with:
+          emptyCommits: false
