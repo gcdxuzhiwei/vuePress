@@ -69,3 +69,5 @@ yarn.lock
 
 # useless files
 templete
+
+/docs/.vuepress/public/live2d
