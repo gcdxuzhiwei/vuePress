@@ -6,9 +6,10 @@ jobs:
     steps:
       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
       - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
-      with:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
+        with:
           node-version: 10
-          registry-url: https://registry.npmjs.org/
       - run: npm run demo
       - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
       - name: Check out repository code
