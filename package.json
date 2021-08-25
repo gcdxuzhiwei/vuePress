@@ -9,7 +9,7 @@
     "publish": "deploy.sh"
   },
   "keywords": [],
-  "author": "Feng L.H.",
+  "author": "xuzhiwei",
   "license": "MIT",
   "devDependencies": {
     "vuepress": "^1.5.2"
